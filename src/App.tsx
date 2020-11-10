@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import Productdetails from "./components/Productdetails/Productdetails";
 import Products from "./components/Products/Products";
-import CartStatus from "./components/Cart/Cartstatus";
 import { IMovies } from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 

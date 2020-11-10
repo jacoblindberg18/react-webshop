@@ -25,6 +25,12 @@ body {
 .navbar-brand {
     width: 100px;
 }
+.nav-link {
+    color:var(--mainWhite);
+}
+.nav-link:hover {
+    color: var(--mainDark) !important;
+}
 
 li {
     list-style-type: none;
@@ -51,4 +57,9 @@ li {
     background: var(--lightBlue);
     color: var(--mainWhite);
     border-color: var(--mainWhite);
+}
+
+.cart-button span {
+    top: -15px;
+    right: -15px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Title from "../Title/Title";
+import "./Products.css"
 
 export interface IMovies {
     id: number;
@@ -55,7 +56,7 @@ export default function Products({onAddToCartButtonClicked}: IUseTool) {
                     <img src={item.imageUrl} alt="" />
                 </Link>
                 <button type="button" className="position-absolute add-to-cart" onClick={(event) => addToCart(event, item, index)}>
-                    <i className="fas fa-cart-plus"></i>
+                    Add to cart <i className="fas fa-cart-plus"></i>
                 </button>
             </div>
             <h6>
