@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Title from "../Title/Title";
-import "./Products.css"
+import "./Products.css";
 
 export interface IMovies {
     id: number;
@@ -17,18 +17,16 @@ interface IUseTool {
     onAddToCartButtonClicked: (product: IMovies) => void;
 }
 
-export default function Products({onAddToCartButtonClicked}: IUseTool) {
+export default function Products({ onAddToCartButtonClicked }: IUseTool) {
     const [movies, setMovies] = useState([]);
     const [pageNotFound, setPageNotFound] = useState("");
-    // const [cart, setCart] = useState([]);
     let cart: IMovies[] = [];
-
 
     useEffect(() => {
         axios
             .get(`http://medieinstitutet-wie-products.azurewebsites.net/api/products`)
             .then((movies) => setMovies(movies.data))
-            .catch((e) => setPageNotFound("Page not found"));
+            .catch((e) => setPageNotFound("Oops, something went wrong. Please try again!"));
     }, []);
 
     if (!movies) {
@@ -42,9 +40,9 @@ export default function Products({onAddToCartButtonClicked}: IUseTool) {
     function addToCart(event: React.MouseEvent<HTMLButtonElement>, item: IMovies, index: number) {
         item.amount = 1;
         item.empty = false;
-        const newObject = {...item};
+        const newObject = { ...item };
         // console.log("hej", newObject);
-        
+
         cart.push(newObject);
         onAddToCartButtonClicked(newObject);
     }
@@ -67,9 +65,15 @@ export default function Products({onAddToCartButtonClicked}: IUseTool) {
 
     return (
         <div>
-            <Title name="our" title="products"/>
+            <Title name="our" title="products" />
             <div className="container">
-                <ul className="row">{moviesHtml}</ul>
+                {pageNotFound ? (
+                    <div>
+                        <h3 style={{textAlign: "center"}}>{pageNotFound}</h3>
+                    </div>
+                ) : (
+                    <ul className="row">{moviesHtml}</ul>
+                )}
             </div>
         </div>
     );

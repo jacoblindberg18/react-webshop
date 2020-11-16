@@ -3,7 +3,6 @@ import { IMovies } from "../Products/Products";
 import { Link } from "react-router-dom";
 import CartStatus from "./Cartstatus";
 import axios from "axios";
-import { error } from "console";
 
 interface ICartStatus {
     cart: IMovies[];

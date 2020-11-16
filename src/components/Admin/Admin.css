@@ -1,0 +1,12 @@
+tr {
+    border: 1px solid black;
+}
+td {
+    vertical-align: top;
+
+}
+
+tr td:last-child {
+    text-align: right;
+    width: 15%;
+}

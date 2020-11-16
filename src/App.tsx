@@ -7,6 +7,7 @@ import Productdetails from "./components/Productdetails/Productdetails";
 import Products from "./components/Products/Products";
 import { IMovies } from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
+import Admin from "./components/Admin/Admin";
 
 function App() {
     const [cart, setCart] = useState<IMovies[]>([]);
@@ -16,29 +17,27 @@ function App() {
             return product.id === productExistingInCart.id;
         });
 
-
         if (!foundProduct) {
             setCart([...cart, product]);
-        } else if(foundProduct && product.empty === true) {
+        } else if (foundProduct && product.empty === true) {
             let foundProductIndex = cart.indexOf(foundProduct);
             cart.splice(foundProductIndex, 1);
-            setCart([...cart])
-        }else {
-            if(foundProduct.amount >= 0) {
+            setCart([...cart]);
+        } else {
+            if (foundProduct.amount >= 0) {
                 foundProduct.amount += 1;
-                setCart([...cart])
+                setCart([...cart]);
             } else {
                 foundProduct.amount = 1;
             }
             console.log(cart, foundProduct.amount);
         }
-
     }
 
     function emptyCart() {
         setCart([]);
     }
-    // console.log(cart, "carthejhejhej");
+    console.log(cart, "carthejhejhej");
 
     return (
         <Router>
@@ -54,6 +53,9 @@ function App() {
                     <Cart cart={cart} onAddClicked={updateCart} onEmptyCartClicked={emptyCart}></Cart>
                 </Route>
                 <Route path="/about">About</Route>
+                <Route path="/admin">
+                    <Admin></Admin>
+                </Route>
                 <Route path="*">Page not found</Route>
             </Switch>
         </Router>
