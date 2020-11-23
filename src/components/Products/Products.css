@@ -3,3 +3,7 @@ button {
     background: var(--lightBlue);
     color: var(--mainWhite);
 }
+
+img {
+    width: 100%;
+}
